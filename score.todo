@@ -6,5 +6,5 @@ Objectives:
     - keep the score count in game.js
 
 Working:
-  ☐ create score function in the main.js
+  X create score function in the main.js
   ☐ later on create game.js and score into it

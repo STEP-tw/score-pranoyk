@@ -1,41 +1,63 @@
-const Game = function (numOfRows, numOfCols) {
-  console.log(numOfCols, numOfRows);
-  this.numOfRows = numOfRows;
-  this.numOfCols = numOfCols;
-  this.snake = undefined;
-  this.food = undefined;
-  this.score = 0;
+const Game=function(topLeft,bottomRight) {
+  this.topLeft=topLeft;
+  this.bottomRight=bottomRight;
+  this.snake={};
+  this.foodType={};
+  this.score=0;
 }
 
-Game.prototype = {
-  createSnake:function(){
-    let tail=new Position(12,10,"east");
-    let body=[];
-    body.push(tail);
-    body.push(tail.next());
-    let head=tail.next().next();
+Game.prototype.addSnake=function(snake) {
+  this.snake=snake;
+}
 
-    this.snake=new Snake(head,body);
-  },
+Game.prototype.getSnake=function() {
+  return snake;
+}
 
-  createFood:function(){
-    this.food=generateRandomPosition(this.numOfCols,this.numOfRows);
-  },
+Game.prototype.turnLeft=function() {
+  return this.snake.turnLeft();
+}
 
-  drawGrids:function(){
-    return drawGrids(this.numOfRows, this.numOfCols);
-  },
+Game.prototype.turnRight=function() {
+  return this.snake.turnRight();
+}
 
-  drawSnake:function(){
-    return drawSnake(this.snake);
-  },
+Game.prototype.grow=function() {
+  let growthFactor=this.foodType.getGrowthFactor();
+  console.log(growthFactor);
+  return this.snake.grow(growthFactor);
+}
 
-  drawFood:function(){
-    return drawFood(this.food);
-  },
+Game.prototype.getFoodType=function() {
+  return this.foodType;
+}
 
-  updateScore:function(){
-    let newScore =  document.getElementById("score");
-    newScore.innerHTML = `<h1>Your Score : ${this.score+=10}</h1>`;
+Game.prototype.move=function() {
+  let details={};
+  details.oldHead=this.snake.getHead();
+  details.oldTail=this.snake.move();
+  details.head=this.snake.getHead();
+  return details;
+}
+
+Game.prototype.hasSnakeEatenFood=function() {
+  return this.snake.head.isSameCoordAs(this.foodType.getPosition());
+}
+
+Game.prototype.createFood=function() {
+  console.log(this.bottomRight);
+  let position=generateRandomPosition(this.bottomRight.x,this.bottomRight.y);
+  let random=generateRandomNumberBetween(0,10);
+  let growthFactor=1;
+  let superFood=false;
+  if(random>5) {
+    growthFactor=10;
+    superFood=true;
   }
+
+Game.prototype.updateScore=function(){
+      let newScore =  document.getElementById("score");
+      newScore.innerHTML = `<h1>Your Score : ${this.score+=10}</h1>`;
+    }
+  this.foodType=new Food(position,growthFactor,superFood);
 }

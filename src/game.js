@@ -68,8 +68,7 @@ Game.prototype.createFood=function() {
   }
 
 Game.prototype.updateScore=function(){
-  let newScore =  document.getElementById("score");
-  newScore.innerHTML = `<h1>Your Score : ${this.score+=10}</h1>`;
+  updateScore(this.score);
 }
 
 this.foodType=new Food(position,growthFactor,superFood);

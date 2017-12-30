@@ -40,5 +40,10 @@ const drawFood=function(food) {
   if(food.isSuperFood())
     paintCell(food.getPosition(),"super-food");
   else
-  paintCell(food.getPosition(),"food");  
+  paintCell(food.getPosition(),"food");
+}
+
+const updateScore=function(score) {
+  let newScore =  document.getElementById("score");
+  newScore.innerHTML = `<h1>Your Score : ${score+=10}</h1>`;
 }

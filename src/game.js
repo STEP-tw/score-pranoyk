@@ -32,5 +32,10 @@ Game.prototype = {
 
   drawFood:function(){
     return drawFood(this.food);
+  },
+
+  updateScore:function(){
+    let newScore =  document.getElementById("score");
+    newScore.innerHTML = `<h1>Your Score : ${this.score+=10}</h1>`;
   }
 }

@@ -1,10 +1,6 @@
+let game = undefined;
 let animator=undefined;
 let score = 0;
-
-const updateScore = function() {
-  let newScore =  document.getElementById("score");
-  newScore.innerHTML = `<h1>Your Score : ${score+=10}</h1>`
-}
 
 const animateSnake=function() {
   let oldHead=game.snake.getHead();
@@ -14,7 +10,7 @@ const animateSnake=function() {
   unpaintSnake(oldTail);
   paintHead(head);
   if(head.isSameCoordAs(game.food)) {
-    updateScore();
+    game.updateScore();
     game.snake.grow();
     game.createFood();
     game.drawFood();
@@ -42,7 +38,6 @@ const addKeyListener=function() {
   grid.focus();
 }
 
-let game = undefined;
 
 const startGame=function() {
   game = new Game(60, 120)

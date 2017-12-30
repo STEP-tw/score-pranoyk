@@ -3,6 +3,10 @@
   margin: 0 auto;
 }
 
+#score {
+  margin-left: 700px;
+}
+
 #grid {
   border-collapse: collapse;
 }

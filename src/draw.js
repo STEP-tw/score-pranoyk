@@ -45,5 +45,7 @@ const drawFood=function(food) {
 
 const updateScore=function(score) {
   let newScore =  document.getElementById("score");
-  newScore.innerHTML = `<h1>Your Score : ${score+=10}</h1>`;
+  score+=10
+  newScore.innerHTML = `<h1>Your Score : ${score}</h1>`;
+  return score;
 }

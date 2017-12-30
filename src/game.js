@@ -1,9 +1,22 @@
-const Game=function(topLeft,bottomRight) {
+const Game=function(topLeft,bottomRight,numOfCols,numOfRows) {
   this.topLeft=topLeft;
   this.bottomRight=bottomRight;
+  this.numOfCols=numOfCols;
+  this.numOfRows=numOfRows;
   this.snake={};
   this.foodType={};
   this.score=0;
+}
+
+Game.prototype.createSnake=function() {
+  let tail=new Position(12,10,"east");
+  let body=[];
+  body.push(tail);
+  body.push(tail.next());
+  let head=tail.next().next();
+
+  snake=new Snake(head,body);
+  game.addSnake(snake);
 }
 
 Game.prototype.addSnake=function(snake) {
@@ -45,7 +58,6 @@ Game.prototype.hasSnakeEatenFood=function() {
 }
 
 Game.prototype.createFood=function() {
-  console.log(this.bottomRight);
   let position=generateRandomPosition(this.bottomRight.x,this.bottomRight.y);
   let random=generateRandomNumberBetween(0,10);
   let growthFactor=1;
@@ -56,8 +68,22 @@ Game.prototype.createFood=function() {
   }
 
 Game.prototype.updateScore=function(){
-      let newScore =  document.getElementById("score");
-      newScore.innerHTML = `<h1>Your Score : ${this.score+=10}</h1>`;
-    }
-  this.foodType=new Food(position,growthFactor,superFood);
+  let newScore =  document.getElementById("score");
+  newScore.innerHTML = `<h1>Your Score : ${this.score+=10}</h1>`;
+}
+
+this.foodType=new Food(position,growthFactor,superFood);
+
+}
+
+Game.prototype.drawGrids = function () {
+  drawGrids(this.numOfRows, this.numOfCols);
+}
+
+Game.prototype.drawSnake = function () {
+  drawSnake(this.snake);
+}
+
+Game.prototype.drawFood = function () {
+  drawFood(this.foodType);
 }

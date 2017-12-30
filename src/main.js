@@ -4,6 +4,12 @@ let numberOfRows=60;
 let numberOfCols=120;
 
 let animator=undefined;
+let score = 0;
+
+const updateScore = function() {
+  let newScore =  document.getElementById("score");
+  newScore.innerHTML = `<h1>Your Score : ${score+=10}</h1>`
+}
 
 const animateSnake=function() {
   let oldHead=snake.getHead();
@@ -13,6 +19,7 @@ const animateSnake=function() {
   unpaintSnake(oldTail);
   paintHead(head);
   if(head.isSameCoordAs(food)) {
+    updateScore();
     snake.grow();
     createFood(numberOfRows,numberOfCols);
     drawFood(food);
@@ -61,7 +68,7 @@ const startGame=function() {
   createFood(numberOfRows,numberOfCols);
   drawFood(food);
   addKeyListener();
-  animator=setInterval(animateSnake,140);
+  animator=setInterval(animateSnake,100);
 }
 
 window.onload=startGame;

@@ -1,5 +1,10 @@
-☐ create a game.js
-☐ give all main game functionality to game.js
+Objectives:
+  ☐ create a game.js
+  ☐ give all main game functionality to game.js
     - give number of rows and coloumns to game.js
     - define snake and food in game.js
     - keep the score count in game.js
+
+Working:
+  ☐ create score function in the main.js
+  ☐ later on create game.js and score into it

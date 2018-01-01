@@ -50,6 +50,7 @@ Game.prototype.move=function() {
   details.oldHead=this.snake.getHead();
   details.oldTail=this.snake.move();
   details.head=this.snake.getHead();
+  details.score=this.score;
   return details;
 }
 
@@ -67,9 +68,10 @@ Game.prototype.createFood=function() {
     superFood=true;
   }
 
-Game.prototype.updateScore=function(){
-  this.score=updateScore(this.score);
+Game.prototype.updateScore=function(score){
+  this.score=score;
 }
+
 
 this.foodType=new Food(position,growthFactor,superFood);
 

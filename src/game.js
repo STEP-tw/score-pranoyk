@@ -74,15 +74,3 @@ Game.prototype.updateScore=function(){
 this.foodType=new Food(position,growthFactor,superFood);
 
 }
-
-Game.prototype.drawGrids = function () {
-  drawGrids(this.numOfRows, this.numOfCols);
-}
-
-Game.prototype.drawSnake = function () {
-  drawSnake(this.snake);
-}
-
-Game.prototype.drawFood = function () {
-  drawFood(this.foodType);
-}

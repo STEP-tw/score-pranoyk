@@ -1,3 +1,5 @@
+let numOfCols=120;
+let numOfRows=60;
 let game=undefined;
 let animator=undefined;
 
@@ -37,17 +39,17 @@ const addKeyListener=function() {
 
 const createGame=function() {
   let topLeft=new Position(0,0,"east");
-  let bottomRight=new Position(120,60,"east");
-  game=new Game(topLeft,bottomRight,120,60);
+  let bottomRight=new Position(numOfCols,numOfRows,"east");
+  game=new Game(topLeft,bottomRight,numOfCols,numOfRows);
 }
 
 const startGame=function() {
   createGame();
   game.createSnake();
-  game.drawGrids();
-  game.drawSnake(game.getSnake());
+  drawGrids(numOfRows, numOfCols);
+  drawSnake(game.getSnake());
   game.createFood();
-  game.drawFood(game.getFoodType());
+  drawFood(game.getFoodType());
   addKeyListener();
   animator=setInterval(animateSnake,100);
 }
